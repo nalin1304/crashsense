@@ -1,0 +1,105 @@
+{
+  "$id": "https://crashsense.local/schemas/real_world_eval.schema.json",
+  "title": "RealWorldEvalReport",
+  "description": "JSON Schema for reports emitted by backend/audio_model/evaluate_real_world.py. Validates the deterministic real-world evaluation report defined in design.md section 4.3 and required by R1.4.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evaluated_at_iso8601",
+    "checkpoint_id",
+    "n_clips",
+    "accuracy",
+    "precision",
+    "recall",
+    "f1",
+    "roc_auc",
+    "confusion_matrix"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of this report shape (MAJOR.MINOR.PATCH)."
+    },
+    "evaluated_at_iso8601": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp at which evaluation completed."
+    },
+    "git_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$",
+      "description": "Short or full lowercase-hex git commit SHA the report was produced against."
+    },
+    "checkpoint_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Filename of the Audio_Detector checkpoint that was evaluated."
+    },
+    "checkpoint_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Lowercase-hex SHA-256 of the checkpoint file bytes."
+    },
+    "n_clips": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of clips actually included in the metrics."
+    },
+    "n_clips_excluded": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of clips skipped per R1.6 (missing, wrong format, decode error, etc.)."
+    },
+    "accuracy": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "precision": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "recall": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "f1": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "roc_auc": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "confusion_matrix": {
+      "type": "array",
+      "description": "2D array of non-negative integers. Rows index true labels, columns index predicted labels.",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "per_class": {
+      "type": "object",
+      "description": "Optional per-class breakdown. Keys are class names (e.g. 'crash', 'noise').",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["precision", "recall", "f1", "support"],
+        "properties": {
+          "precision": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "recall": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "f1": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "support": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

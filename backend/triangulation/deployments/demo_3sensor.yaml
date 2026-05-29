@@ -1,0 +1,34 @@
+metadata:
+  created_at_iso8601: '2025-01-15T00:00:00Z'
+  name: demo-3sensor
+  notes: Bundled demo deployment, derived from sensor_config.MINIMAL
+mode: demo
+schema_version: 1.0.0
+sensors:
+- altitude_m: 0.0
+  clock_offset_us_bound: 1000.0
+  clock_source: NONE
+  display_name: Toll Plaza Alpha
+  is_toll_plaza: true
+  lat: 19.1136
+  lon: 72.8697
+  microphone_model: demo-microphone
+  sensor_id: S1
+- altitude_m: 0.0
+  clock_offset_us_bound: 1000.0
+  clock_source: NONE
+  display_name: CCTV Pole B12
+  is_toll_plaza: false
+  lat: 19.1089
+  lon: 72.8812
+  microphone_model: demo-microphone
+  sensor_id: S2
+- altitude_m: 0.0
+  clock_offset_us_bound: 1000.0
+  clock_source: NONE
+  display_name: Toll Plaza Beta
+  is_toll_plaza: true
+  lat: 19.1201
+  lon: 72.8754
+  microphone_model: demo-microphone
+  sensor_id: S3

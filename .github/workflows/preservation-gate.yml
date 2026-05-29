@@ -1,0 +1,116 @@
+name: preservation-gate
+
+# Phase 1, R31.5: this workflow is the merge-blocking CI job that asserts
+# every preserved capability from the base CrashSense spec still holds on the
+# candidate hardened build. It invokes `make preservation-gate`, which is the
+# single fail-fast entry point defined in design.md section 3.1.4.
+#
+# Branch protection wiring (configured manually in repo settings, see
+# docs/ci.md): require status check `preservation-gate` to pass before merging
+# into `main`.
+
+# Quoted to avoid YAML 1.1 boolean coercion of the key `on` -> True.
+"on":
+  pull_request:
+    branches: ["**"]
+  push:
+    branches: ["main"]
+
+# Cancel an in-flight run when a new commit lands on the same ref. Keeps the
+# preservation gate snappy without sacrificing the merge-block guarantee.
+concurrency:
+  group: preservation-gate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preservation-gate:
+    name: preservation-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history needed so `git rev-parse --short HEAD` in the
+          # Makefile resolves to the right commit on PR builds.
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r backend/requirements.txt
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      # ----------------------------------------------------------------------
+      # Heavy artifacts: the held-out evaluator reads checkpoints under
+      # backend/audio_model/checkpoints/ and the dataset prep pipeline writes
+      # spectrograms under data/spectrograms/. Both are GB-scale and live
+      # outside git. We cache them keyed on the training-input source files
+      # so the cache invalidates whenever the trainer or dataset prep
+      # changes -- but we never try to repopulate them from inside CI. The
+      # gate sub-checks already have graceful skip paths (see Makefile and
+      # docs/ci.md) when the underlying artifacts are absent.
+      # ----------------------------------------------------------------------
+      - name: Cache audio model checkpoints
+        id: cache-checkpoints
+        uses: actions/cache@v4
+        with:
+          path: backend/audio_model/checkpoints
+          key: checkpoints-${{ runner.os }}-${{ hashFiles('backend/audio_model/dataset_prep.py', 'backend/audio_model/train.py', 'backend/audio_model/model.py') }}
+          restore-keys: |
+            checkpoints-${{ runner.os }}-
+
+      - name: Cache spectrogram corpus
+        id: cache-spectrograms
+        uses: actions/cache@v4
+        with:
+          path: data/spectrograms
+          key: spectrograms-${{ runner.os }}-${{ hashFiles('backend/audio_model/dataset_prep.py', 'backend/audio_model/spectrogram_gen.py') }}
+          restore-keys: |
+            spectrograms-${{ runner.os }}-
+
+      - name: Cache raw audio corpus
+        id: cache-raw-audio
+        uses: actions/cache@v4
+        with:
+          path: data/raw_audio
+          key: raw-audio-${{ runner.os }}-${{ hashFiles('backend/audio_model/dataset_prep.py', 'scripts/curate_youtube_clips.py') }}
+          restore-keys: |
+            raw-audio-${{ runner.os }}-
+
+      - name: Warn on heavy-artifact cache miss
+        # The preservation gate has graceful skips for missing artifacts (see
+        # docs/ci.md, "Common failures"). We surface a clear log line so a
+        # cold run is obvious in the CI output without failing the build.
+        if: |
+          steps.cache-checkpoints.outputs.cache-hit != 'true' ||
+          steps.cache-spectrograms.outputs.cache-hit != 'true' ||
+          steps.cache-raw-audio.outputs.cache-hit != 'true'
+        run: |
+          echo "::warning::Heavy-artifact cache miss. The preservation gate's audio sub-checks may emit SKIP lines; see docs/ci.md for how to seed the cache."
+          echo "  checkpoints cache-hit:  ${{ steps.cache-checkpoints.outputs.cache-hit }}"
+          echo "  spectrograms cache-hit: ${{ steps.cache-spectrograms.outputs.cache-hit }}"
+          echo "  raw_audio cache-hit:    ${{ steps.cache-raw-audio.outputs.cache-hit }}"
+
+      - name: Run preservation gate
+        # Single CI-blocking command. Make's default fail-fast turns the
+        # first red sub-check into the stop reason (R31.5).
+        run: make preservation-gate

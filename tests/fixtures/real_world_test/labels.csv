@@ -1,0 +1,9 @@
+filename,label,annotator_id,annotated_at_iso8601,source_uri
+rw_crash_0001.wav,crash,testbot,2025-01-15T00:00:00Z,fixture:rw_crash_0001
+rw_crash_0002.wav,crash,testbot,2025-01-15T00:00:00Z,fixture:rw_crash_0002
+rw_noise_0001.wav,noise,testbot,2025-01-15T00:00:00Z,fixture:rw_noise_0001
+rw_noise_0002.wav,noise,testbot,2025-01-15T00:00:00Z,fixture:rw_noise_0002
+rw_crash_0099.wav,crash,testbot,2025-01-15T00:00:00Z,fixture:rw_crash_0099_missing
+rw_crash_0100.mp3,crash,testbot,2025-01-15T00:00:00Z,fixture:rw_crash_0100_nonwav
+rw_crash_short.wav,crash,testbot,2025-01-15T00:00:00Z,fixture:rw_crash_short_duration
+rw_crash_0001.wav,crash,bot!@#,2025-01-15T00:00:00Z,fixture:rw_crash_bad_annotator

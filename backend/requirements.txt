@@ -1,0 +1,41 @@
+# CrashSense backend dependencies (Python 3.10 - 3.14 compatible)
+
+# Deep learning stack
+torch==2.10.0
+torchvision==0.25.0
+torchaudio==2.10.0
+timm==1.0.27
+
+# Audio processing
+librosa==0.11.0
+soundfile==0.13.1
+
+# Numerics
+numpy==2.4.2
+scipy==1.17.1
+matplotlib==3.10.8
+Pillow==12.1.1
+
+# Web framework
+fastapi==0.135.1
+uvicorn[standard]==0.41.0
+websockets==15.0.1
+httpx==0.28.1
+python-multipart==0.0.20
+pydantic==2.12.5
+
+# Geospatial
+geopy==2.4.1
+
+# Dataset acquisition
+requests==2.32.5
+tqdm==4.67.1
+
+
+# Schema validation
+jsonschema==4.23.0
+PyYAML==6.0.3
+
+# Tests (optional)
+pytest==8.3.4
+pytest-asyncio==0.25.2

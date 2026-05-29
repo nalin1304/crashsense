@@ -1,0 +1,74 @@
+/* Reduced-motion overrides for the CrashSense Dashboard.
+ *
+ * Validates: Requirement 25.5 — when `prefers-reduced-motion: reduce` is set,
+ * the Dashboard MUST replace the drone-flight animation, alert-panel slide,
+ * and wavefront expansion with cross-fade transitions of 200 ms or less.
+ *
+ * Scope: this stylesheet collapses every CSS-driven keyframe animation and
+ * transition that ships with the Dashboard. JS-driven motion (Leaflet's
+ * setLatLng on the drone marker, Mapbox flyTo) is handled separately by the
+ * components that own those animations.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* ---------------------------------------------------------------------- */
+  /* 1. Decorative looping animations on map markers.                       */
+  /*    Source: frontend/src/styles.css — pulseDot, bounce, arrivalPulse.   */
+  /* ---------------------------------------------------------------------- */
+  .sensor-marker .pulse,
+  .crash-pin,
+  .crash-pin svg,
+  .arrival-pulse,
+  .drone-marker {
+    animation: none !important;
+    transition: opacity 200ms ease-in-out !important;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 2. Wavefront expansion (R25.5).                                        */
+  /*    Replace the 3 s scale-up keyframe animation with a brief opacity    */
+  /*    cross-fade. The element is still removed by JS after ~3.2 s.        */
+  /* ---------------------------------------------------------------------- */
+  .wavefront-ring {
+    animation: none !important;
+    transform: none !important;
+    transition: opacity 200ms ease-in-out !important;
+    opacity: 0.6;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 3. Alert-panel slide (R25.5).                                          */
+  /*    The AlertPanel aside in `frontend/src/components/AlertPanel.jsx`    */
+  /*    uses `transition-transform duration-300` to slide in via            */
+  /*    `translate-x-0` / `translate-x-full`. Render the open/closed state  */
+  /*    change as an opacity cross-fade instead of a horizontal slide.      */
+  /* ---------------------------------------------------------------------- */
+  aside[aria-label="Crash alerts"] {
+    transition: opacity 200ms ease-in-out !important;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 4. Drone-flight animation (R25.5).                                     */
+  /*    The Leaflet/Mapbox drone marker is moved every animation frame from */
+  /*    JS. CSS cannot cancel that loop, but we soften any CSS-driven       */
+  /*    transition so the marker repositions instantly rather than easing.  */
+  /* ---------------------------------------------------------------------- */
+  .leaflet-marker-icon,
+  .mapboxgl-marker {
+    transition: opacity 200ms ease-in-out !important;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 5. Tailwind utility-driven transitions used elsewhere on the page      */
+  /*    (status badge, simulate buttons, map pane resize). Cap the duration */
+  /*    of any opt-in transition or animation at 200 ms.                    */
+  /* ---------------------------------------------------------------------- */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 200ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 200ms !important;
+    scroll-behavior: auto !important;
+  }
+}
