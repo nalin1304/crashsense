@@ -1,0 +1,174 @@
+{
+  "categories": {
+    "airbrakes": [
+      {
+        "duration_s": 4.0,
+        "filename": "airbrakes_placeholder_01.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:airbrakes_placeholder_01"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "airbrakes_placeholder_02.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:airbrakes_placeholder_02"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "airbrakes_placeholder_03.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:airbrakes_placeholder_03"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "airbrakes_placeholder_04.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:airbrakes_placeholder_04"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "airbrakes_placeholder_05.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:airbrakes_placeholder_05"
+      }
+    ],
+    "fireworks": [
+      {
+        "duration_s": 4.0,
+        "filename": "fireworks_placeholder_01.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:fireworks_placeholder_01"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "fireworks_placeholder_02.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:fireworks_placeholder_02"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "fireworks_placeholder_03.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:fireworks_placeholder_03"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "fireworks_placeholder_04.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:fireworks_placeholder_04"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "fireworks_placeholder_05.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:fireworks_placeholder_05"
+      }
+    ],
+    "horns": [
+      {
+        "duration_s": 4.0,
+        "filename": "horns_placeholder_01.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:horns_placeholder_01"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "horns_placeholder_02.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:horns_placeholder_02"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "horns_placeholder_03.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:horns_placeholder_03"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "horns_placeholder_04.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:horns_placeholder_04"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "horns_placeholder_05.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:horns_placeholder_05"
+      }
+    ],
+    "tire_blowouts": [
+      {
+        "duration_s": 4.0,
+        "filename": "tire_blowouts_placeholder_01.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:tire_blowouts_placeholder_01"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "tire_blowouts_placeholder_02.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:tire_blowouts_placeholder_02"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "tire_blowouts_placeholder_03.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:tire_blowouts_placeholder_03"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "tire_blowouts_placeholder_04.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:tire_blowouts_placeholder_04"
+      },
+      {
+        "duration_s": 4.0,
+        "filename": "tire_blowouts_placeholder_05.wav",
+        "is_placeholder": true,
+        "license": "CC0-1.0 (synthetic)",
+        "recorded_at_iso8601": "2025-01-15T00:00:00Z",
+        "source_uri": "synthetic:tire_blowouts_placeholder_05"
+      }
+    ]
+  },
+  "generated_at_iso8601": "2025-01-15T00:00:00Z",
+  "schema_version": "1.0.0"
+}

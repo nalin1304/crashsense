@@ -11,22 +11,8 @@ venv/
 frontend/node_modules/
 frontend/dist/
 
-# CrashSense data and checkpoints
-data/raw_audio/*
-data/spectrograms/*
-data/adversarial/*
-data/ambient_long/*
-!data/raw_audio/.gitkeep
-!data/spectrograms/.gitkeep
-data/ast_features*.npz
-data/events.sqlite3*
-backend/audio_model/*.pth
-backend/audio_model/checkpoints/*.pth
+# Local caches
 .cache/
-
-# Local agent / generated outputs
-.kiro/
-reports/
 
 # Editor / OS
 .DS_Store

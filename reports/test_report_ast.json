@@ -1,0 +1,59 @@
+{
+  "n": 305,
+  "classes": [
+    "crash",
+    "noise"
+  ],
+  "metrics": {
+    "confusion_matrix": [
+      [
+        168,
+        9
+      ],
+      [
+        4,
+        124
+      ]
+    ],
+    "per_class": [
+      {
+        "class": 0,
+        "precision": 0.9767441860465116,
+        "recall": 0.9491525423728814,
+        "f1": 0.9627507163323781,
+        "tp": 168,
+        "fp": 4,
+        "fn": 9
+      },
+      {
+        "class": 1,
+        "precision": 0.9323308270676691,
+        "recall": 0.96875,
+        "f1": 0.950191570881226,
+        "tp": 124,
+        "fp": 9,
+        "fn": 4
+      }
+    ],
+    "accuracy": 0.9573770491803278
+  },
+  "ece": 0.008578902385273925,
+  "per_source": {
+    "esc50": {
+      "total": 47,
+      "correct": 41,
+      "accuracy": 0.8723404255319149
+    },
+    "audioset": {
+      "total": 46,
+      "correct": 41,
+      "accuracy": 0.8913043478260869
+    },
+    "urbansound8k": {
+      "total": 212,
+      "correct": 210,
+      "accuracy": 0.9905660377358491
+    }
+  },
+  "temperature": 2.1
+}

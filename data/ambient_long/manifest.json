@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at_iso8601": "2025-01-15T00:00:00Z",
+  "sessions": [
+    {
+      "filename": "ambient_001.wav",
+      "duration_seconds": 36000.0,
+      "sample_rate_hz": 22050,
+      "recorded_at_iso8601": "2025-01-15T06:00:00Z",
+      "location_label": "PLACEHOLDER:highway_north_bound",
+      "is_placeholder": true
+    },
+    {
+      "filename": "ambient_002.wav",
+      "duration_seconds": 36000.0,
+      "sample_rate_hz": 22050,
+      "recorded_at_iso8601": "2025-01-16T06:00:00Z",
+      "location_label": "PLACEHOLDER:highway_south_bound",
+      "is_placeholder": true
+    },
+    {
+      "filename": "ambient_003.wav",
+      "duration_seconds": 36000.0,
+      "sample_rate_hz": 22050,
+      "recorded_at_iso8601": "2025-01-17T06:00:00Z",
+      "location_label": "PLACEHOLDER:toll_plaza_overnight",
+      "is_placeholder": true
+    }
+  ]
+}

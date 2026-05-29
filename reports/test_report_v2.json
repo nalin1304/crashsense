@@ -1,0 +1,162 @@
+{
+  "checkpoint": "/Users/nalinaggarwal/road safety/backend/audio_model/crash_detector.pth",
+  "backbone": "resnet18",
+  "n_test": 349,
+  "classes": [
+    "crash",
+    "noise"
+  ],
+  "metrics": {
+    "confusion_matrix": [
+      [
+        213,
+        0
+      ],
+      [
+        0,
+        136
+      ]
+    ],
+    "per_class": [
+      {
+        "class": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 213,
+        "fp": 0,
+        "fn": 0,
+        "tn": 136
+      },
+      {
+        "class": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tp": 136,
+        "fp": 0,
+        "fn": 0,
+        "tn": 213
+      }
+    ],
+    "accuracy": 1.0
+  },
+  "calibration": {
+    "ece": 0.009371889184060957,
+    "bins": [
+      {
+        "bin_low": 0.0,
+        "bin_high": 0.1,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.1,
+        "bin_high": 0.2,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.2,
+        "bin_high": 0.30000000000000004,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.30000000000000004,
+        "bin_high": 0.4,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.5,
+        "bin_high": 0.6000000000000001,
+        "count": 2,
+        "avg_confidence": 0.579531729221344,
+        "accuracy": 1.0,
+        "gap": 0.420468270778656
+      },
+      {
+        "bin_low": 0.6000000000000001,
+        "bin_high": 0.7000000000000001,
+        "count": 0,
+        "avg_confidence": null,
+        "accuracy": null,
+        "gap": 0.0
+      },
+      {
+        "bin_low": 0.7000000000000001,
+        "bin_high": 0.8,
+        "count": 4,
+        "avg_confidence": 0.7203606367111206,
+        "accuracy": 1.0,
+        "gap": 0.2796393632888794
+      },
+      {
+        "bin_low": 0.8,
+        "bin_high": 0.9,
+        "count": 3,
+        "avg_confidence": 0.8688104748725891,
+        "accuracy": 1.0,
+        "gap": 0.1311895251274109
+      },
+      {
+        "bin_low": 0.9,
+        "bin_high": 1.0,
+        "count": 340,
+        "avg_confidence": 0.9973008036613464,
+        "accuracy": 1.0,
+        "gap": 0.0026991963386535645
+      }
+    ],
+    "n_samples": 349
+  },
+  "per_source": {
+    "urbansound8k": {
+      "total": 271,
+      "correct": 271,
+      "accuracy": 1.0,
+      "confusion_matrix": [
+        [
+          177,
+          0
+        ],
+        [
+          0,
+          94
+        ]
+      ]
+    },
+    "esc50": {
+      "total": 78,
+      "correct": 78,
+      "accuracy": 1.0,
+      "confusion_matrix": [
+        [
+          36,
+          0
+        ],
+        [
+          0,
+          42
+        ]
+      ]
+    }
+  }
+}
